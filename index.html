@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Cal</title>
+    <style>
+        body{
+            background-color:rgb(243, 239, 235);
+            margin-top: 100px;
+        }
+        .cal{
+            background-color:white;
+            margin:5px;
+            padding:10px;
+            border:none;
+            border-radius:10px;
+            height:300px;
+            width: fit-content;
+        }
+        fieldset{
+            border-radius:15px;
+        }
+        label{
+            padding:10px;
+        }
+        #but{
+            background-color: black;
+            color:white;
+            padding:5px;
+            border:none;
+            border-radius:5px;
+            width:100px;
+        }
+        @media only screen and (min-width:700px){
+            .cal{
+            height:fit-content;
+            width:600px;
+        }
+
+    </style>
+</head>
+<body><center>
+    <div class="cal">
+        <h1>AGE CALCULATOR</h1>
+    <form>
+    <fieldset><br>
+        <label> Name </label> <input type="text" id="name" value="" placeholder="Enter ur name">
+        <br><br>
+        <label> DOB </label>
+         <input type="date" id="dob" ><br><br>
+         <input type="submit" value="Calulate" onclick="cal()" id="but"><br><br>
+    </fieldset>
+    </form></div><div id="result">
+
+    </div></center>
+    <script>
+       function cal(){
+        var name=document.getElementById("name").value;
+        var input=document.getElementById("dob").value;
+        var dob=new Date(input);
+        if(input==null){
+          document.querySelector("#result").innerHTML="** Choose A Date PLease **";
+        }
+        else if(input==""){
+          document.querySelector("#result").innerHTML="** Choose A Date PLease **";
+        }else{
+        var mon_diff=Date.now()- dob.getTime();
+        var age_dt=new Date(mon_diff);
+        var year=age_dt.getUTCFullYear();
+        var age=Math.abs(year-1970);
+        alert("HI "+ name +", Your Age is "+ age);
+        }
+    }
+
+    </script>
+</body>
+</html>
